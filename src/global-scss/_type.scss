@@ -1,0 +1,208 @@
+// Headers
+//
+// Wrapper:
+// max-width: 700px;
+//
+// Markup:
+// <h1>Header 1 (36px) - Lorem Ipsum Solor Domet</h1>
+// <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+// <h2>Header 2 (30px) - Lorem Ipsum Solor Domet</h2>
+// <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+// <h3>Header 3 (26px) - Lorem Ipsum Solor Domet</h3>
+// <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+// <h4>Header 4 (18px) - Lorem Ipsum Solor Domet</h4>
+// <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+// <h5>Header 5 (16px) - Lorem Ipsum Solor Domet</h5>
+// <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+// <h6>Header 6 (16px) - Lorem Ipsum Solor Domet</h6>
+// <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+//
+// Weight: -99
+//
+// Styleguide Typography.Headers
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $header-color;
+  font-family: $header-font;
+  @include font-weight(medium);
+  margin: 0 0 20px;
+  transition: font-size $ts $te;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+h1 {
+  @include rem(font-size, 32px);
+
+  @include from(10) {
+    @include rem(font-size, 36px);
+  }
+}
+
+h2 {
+  @include rem(font-size, 26px);
+
+  @include from(10) {
+    @include rem(font-size, 30px);
+  }
+}
+
+h3 {
+  @include rem(font-size, 20px);
+
+  @include from(10) {
+    @include rem(font-size, 26px);
+  }
+}
+
+h4 {
+  @include rem(font-size, 17px);
+
+  @include from(10) {
+    @include rem(font-size, 18px);
+  }
+}
+
+h5 {
+  @include rem(font-size, 16px);
+}
+
+h6 {
+  @include rem(font-size, 16px);
+}
+
+// Paragraphs
+//
+// Wrapper:
+// max-width: 700px;
+//
+// Markup:
+// <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+// <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Donec elementum ligula eu sapien consequat eleifend. </p>
+// <p>Donec nec dolor erat, condimentum sagittis sem. Praesent porttitor porttitor risus, dapibus rutrum ipsum gravida et. Integer lectus nisi, facilisis sit amet eleifend nec, pharetra ut augue. Integer quam nunc, consequat nec egestas ac, volutpat ac nisi. </p>
+//
+// Weight: -98
+//
+// Styleguide Typography.Paragraphs
+p {
+  @include rem(font-size, 16px);
+  line-height: 1.3;
+  margin: 0 0 25px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+// Unordered Lists
+//
+// Wrapper:
+// max-width: 700px;
+//
+// Markup:
+// <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+// <ul>
+//   <li>Lorem ipsum dolor</li>
+//   <li>Sit amet, consectetur
+//     <ul>
+//       <li>Lorem ipsum dolor
+//         <ul>
+//           <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
+//         </ul>
+//       </li>
+//       <li>Sit amet, consectetur</li>
+//       <li>Adipisicing elit, sed</li>
+//       <li>Do eiusmod tempor</li>
+//       <li>Incididunt ut labore</li>
+//       <li>Et dolore magna</li>
+//       <li>Aliqua. Ut enim</li>
+//     </ul>
+//   </li>
+//   <li>Adipisicing elit, sed</li>
+//   <li>Do eiusmod tempor</li>
+//   <li>Incididunt ut labore</li>
+//   <li>Et dolore magna</li>
+//   <li>Aliqua. Ut enim</li>
+// </ul>
+//
+// Weight: -97
+//
+// Styleguide Typography.Unordered Lists
+
+// Ordered Lists
+//
+// Wrapper:
+// max-width: 700px;
+//
+// Markup:
+// <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+// <ol>
+//   <li>Lorem ipsum dolor</li>
+//   <li>Sit amet, consectetur
+//     <ul>
+//       <li>Lorem ipsum dolor</li>
+//       <li>Sit amet, consectetur</li>
+//       <li>Adipisicing elit, sed</li>
+//       <li>Do eiusmod tempor</li>
+//       <li>Incididunt ut labore</li>
+//       <li>Et dolore magna</li>
+//       <li>Aliqua. Ut enim</li>
+//     </ul>
+//   </li>
+//   <li>Adipisicing elit, sed</li>
+//   <li>Do eiusmod tempor</li>
+//   <li>Incididunt ut labore</li>
+//   <li>Et dolore magna</li>
+//   <li>Aliqua. Ut enim</li>
+// </ol>
+// <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+//
+// Weight: -96
+//
+// Styleguide Typography.Ordered Lists
+ol,
+ul {
+  margin: 0 0 25px;
+
+  li {
+    @include rem(font-size, 16px);
+  }
+}
+
+// Blockquotes
+//
+// Wrapper:
+// max-width: 700px;
+//
+// Markup:
+// <blockquote>
+//   Those people who think they know everything are a great annoyance to those of us who do.
+//   <cite>Isaac Asimov</cite>
+// </blockquote>
+//
+// Weight: -95
+//
+// Styleguide Typography.Blockquotes
+blockquote {
+  padding: 8px 24px;
+  border-left: 2px solid $hr-color;
+  margin: 0 0 16px;
+
+  cite {
+    display: block;
+    color: #666;
+    @include rem(font-size, 13px);
+    padding-top: 8px;
+
+    &::before {
+      content: '— ';
+    }
+  }
+}

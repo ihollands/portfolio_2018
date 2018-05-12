@@ -1,0 +1,199 @@
+// sass-lint:disable-all
+.switch-light span span {
+  display: none;
+}
+
+@media only screen {
+
+  .switch-ios.switch-light {
+    position: relative;
+    display: block;
+    width: 75px;
+    height: 24px;
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+
+      & > span {
+        background-color: #666;
+      }
+
+      a {
+        border-color: #666;
+      }
+    }
+  }
+
+  .switch-light::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+
+  .switch-light *,
+  .switch-light *:after,
+  .switch-light *:before {
+    box-sizing: border-box;
+  }
+
+  .switch-light a {
+    display: block;
+    transition: all .2s ease-out;
+  }
+
+  .switch-light > span,
+  .switch-light label {
+    line-height: 24px;
+    vertical-align: middle;
+  }
+
+  .switch-light input:focus + label,
+  .switch-light input:focus ~ span a {
+    outline: 0;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 0) {
+  .switch-light input:focus + label,
+  .switch-light input:focus ~ span a {
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+  }
+}
+@media only screen {
+
+  .switch-light input {
+    position: absolute;
+    opacity: 0;
+    z-index: 3;
+  }
+
+  .switch-light input:checked ~ span a {
+    right: 0;
+  }
+
+  .switch-light > span {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    height: 24px;
+    padding: 0;
+    text-align: left;
+  }
+
+  .switch-light span span {
+    position: relative;
+    z-index: 2;
+    display: block;
+    float: left;
+    width: 50%;
+    text-align: center;
+    user-select: none;
+  }
+
+  .switch-light a {
+    position: absolute;
+    right: 50%;
+    top: 0;
+    z-index: 1;
+    display: block;
+    width: 50%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .switch-ios.switch-light span span {
+    color: #fff;
+  }
+
+  .switch-ios.switch-light a {
+    left: 8px;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 4px solid #888;
+    transition: all .2s ease-out;
+  }
+
+  .switch-ios.switch-light > span {
+    display: block;
+    width: 100%;
+    height: 24px;
+    background-color: #888;
+    transition: all .4s ease-out;
+  }
+
+  .switch-ios.switch-light > span span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    vertical-align: middle;
+    transition: all .2s ease-out;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: .8em;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  .switch-ios.switch-light > span span:first-of-type {
+    opacity: 1;
+    padding-left: 28px;
+  }
+
+  .switch-ios.switch-light > span span:last-of-type {
+    padding-right: 28px;
+  }
+
+  .switch-ios.switch-light input:checked ~ span a {
+    left: 100%;
+    margin-left: -30px;
+  }
+
+  .switch-ios.switch-light input:checked ~ span span:first-of-type {
+    opacity: 0;
+  }
+
+  .switch-ios.switch-light input:checked ~ span span:last-of-type {
+    opacity: 1;
+    color: #fff;
+  }
+
+  .switch-ios input:checked + label {
+    color: #3e4043;
+  }
+
+  .switch-light.switch-material.switch-light input ~ span:after,
+  .switch-light.switch-material.switch-light input ~ span:before,
+  .switch-material.switch-toggle input + label:after {
+    visibility: hidden;
+  }
+
+  .switch-light.switch-material.switch-light input:focus:checked ~ span:before,
+  .switch-light.switch-material.switch-light input:focus:not(:checked) ~ span:after,
+  .switch-material.switch-toggle input:focus:checked + label:after {
+    visibility: visible;
+  }
+}
+
+@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 80em) {
+  .switch-light,
+  .switch-toggle {
+    -webkit-animation: webkitSiblingBugfix infinite 1s;
+  }
+}
+
+@-webkit-keyframes webkitSiblingBugfix {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}

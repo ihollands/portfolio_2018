@@ -1,0 +1,57 @@
+// Icomoon variables
+$icons: (
+  circle: '\f111',
+  check: '\f00c',
+  facebook: '\f09a',
+  twitter: '\f099',
+  instagram: '\f16d',
+  google-plus: '\f0d5',
+  linkedin: '\f0e1',
+  youtube: '\f167',
+  snapchat: '\f2ac',
+  youtube-play: '\f16a',
+  pinterest: '\f231',
+  search: '\f002',
+  caret-left: '\e408',
+  caret-right: '\e409',
+  caret-up: '\e5ce',
+  caret-down: '\e5cf',
+  close: '\e5cd'
+);
+
+[class^='icon-'],
+[class*=' icon-'] {
+
+  &::before {
+    @include icomoon;
+  }
+}
+
+// Site Icons
+//
+// Icons:
+// circle          : icon-circle
+// check           : icon-check
+// search          : icon-search
+// caret-left      : icon-caret-left
+// caret-right     : icon-caret-right
+// caret-up        : icon-caret-up
+// caret-down      : icon-caret-down
+// close           : icon-close
+//
+// Styleguide Icons.Site Icons
+
+// Social Media Icons
+//
+// Icons:
+// facebook        : icon-facebook
+// twitter         : icon-twitter
+// instagram       : icon-instagram
+// google-plus     : icon-google-plus
+// linkedin        : icon-linkedin
+// youtube         : icon-youtube
+// snapchat        : icon-snapchat
+// youtube-play    : icon-youtube-play
+// pinterest       : icon-pinterest
+//
+// Styleguide Icons.Social Media Icons

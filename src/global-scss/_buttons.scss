@@ -1,0 +1,45 @@
+// Buttons
+//
+// :hover    - Hover state
+// :focus    - Focus state
+// :active   - Active state
+// :disabled - Disabled state
+//
+// Markup:
+// <a class="btn {{modifier_class}}" href="#">Link Button</a>
+// <button class="{{modifier_class}}">Standard Button</button>
+// <input type="submit" class="{{modifier_class}}" value="Submit Button" />
+// <input type="reset" class="{{modifier_class}}" value="Reset Button" />
+//
+// Weight: -98
+//
+// Styleguide Components.Buttons
+button,
+.btn,
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
+  display: inline-block;
+  cursor: pointer;
+  background: $link-color;
+  color: primary-color(white);
+  @include rem(font-size, 16px);
+  @include font-weight(bold);
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: $border-radius;
+  transition: background-color $ts $te;
+
+  @include hover {
+    background: darken($link-color, 10%);
+    color: primary-color(white);
+    outline: 0;
+  }
+
+  &:disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+}

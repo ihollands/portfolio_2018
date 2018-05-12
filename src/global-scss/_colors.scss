@@ -1,0 +1,71 @@
+// Primary Colors
+//
+// Colors:
+// primary-color(black)          : #000 - Black
+// primary-color(gray, shade1)     : #333 - Dark Gray
+// primary-color(gray)           : #666 - Gray
+// primary-color(gray, tint1)    : #ccc - Light Gray
+// primary-color(white)          : #fff - White
+// primary-color(orange, shade1)   : #c3420b - Dark Orange
+// primary-color(orange)         : #f2530f - Orange
+// primary-color(orange, tint1)  : #f5763f - Light Orange
+//
+// Styleguide Colors.Primary Colors
+$primarycolors: (
+  white: (
+    base: #fff
+  ),
+  black: (
+    base: #000
+  ),
+  gray: (
+    base: #666,
+    tint1: #ccc,
+    shade1: #333
+  ),
+  orange: (
+    base: #f2530f,
+    tint1: lighten(#f2530f, 10%),
+    shade1: darken(#f2530f, 10%)
+  )
+);
+
+// Secondary Colors
+//
+// Colors:
+// secondary-color(red, shade1)   : #cc0000 - Red - Shade 1
+// secondary-color(red)         : #ff0000 - Red
+// secondary-color(red, tint1)  : #ff3333 - Red - Tint 1
+//
+// Styleguide Colors.Secondary Colors
+$secondarycolors: (
+  red: (
+    base: #f00,
+    tint1: lighten(#f00, 10%),
+    shade1: darken(#f00, 10%)
+  )
+);
+
+// Social Media Colors
+//
+// Colors:
+// sm-color(twitter)     : #00b6f1 - Twitter
+// sm-color(facebook)    : #3b5998 - Facebook
+// sm-color(googleplus)  : #df4a32 - Google Plus
+// sm-color(pinterest)   : #cb2027 - Pinterest
+// sm-color(linkedin)    : #007bb6 - LinkedIn
+// sm-color(youtube)     : #b31217 - YouTube
+// sm-color(instagram)   : #c32aa3 - Instagram
+// sm-color(snapchat)    : #fffc00 - Snapchat
+//
+// Styleguide Colors.Social Media Colors
+$socialmediacolors: (
+  twitter:    #00b6f1,
+  facebook:   #3b5998,
+  googleplus: #df4a32,
+  pinterest:  #cb2027,
+  linkedin:   #007bb6,
+  youtube:    #b31217,
+  instagram:  #c32aa3,
+  snapchat:   #fffc00,
+);

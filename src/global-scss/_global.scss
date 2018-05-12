@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // disable webkit tap highlight
+  height: 100%;
+}
+
+body {
+  position: relative;
+  color: $body-text-color;
+  font-family: $body-text-font;
+  font-size: $base-font-size;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+// Horizontal Rules
+//
+// Markup:
+// <hr>
+//
+// Styleguide Components.Horizontal Rules
+hr {
+  background-color: transparent;
+  border: 0;
+  border-bottom: solid 1px $hr-color;
+  margin: 40px auto;
+  clear: both;
+}
+
+// Images
+//
+// Markup:
+// <img src="https://placekitten.com/600/363" alt="Kittens!">
+//
+// Styleguide Components.Images
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Video Containers
+//
+// Markup:
+// <div class="video-container">
+//  <iframe width="560" height="315" src="https://www.youtube.com/embed/56ucT_Hw4bg" frameborder="0" allowfullscreen></iframe>
+// </div>
+//
+// Styleguide Components.Video Containers
+.video-container {
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+
+  .placeholder,
+  embed,
+  iframe,
+  object {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

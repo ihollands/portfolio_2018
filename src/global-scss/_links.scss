@@ -1,0 +1,32 @@
+// Links
+//
+// :hover    - Hover state
+// :focus    - Focus state
+// :active   - Active state
+// :disabled - Disabled state
+//
+// Markup:
+// This is a <a class="{{modifier_class}}" href="#">standard link</a>
+//
+// Weight: -99
+//
+// Styleguide Components.Links
+a {
+  display: inline-block;
+  color: $link-color;
+  text-decoration: none;
+  border-bottom: 1px solid $link-color;
+  transition: $ts $te;
+
+  @include hover {
+    color: darken($link-color, 10%);
+    border-color: transparent;
+    outline: 0;
+  }
+
+  &:disabled,
+  &[disabled] {
+    opacity: .5;
+    pointer-events: none;
+  }
+}

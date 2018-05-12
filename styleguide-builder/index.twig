@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <title>{{options.title}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="generator" content="kss-node">
+
+  <link rel="stylesheet" href="kss-assets/css/kss.css">
+  <link rel="stylesheet" href="https://i.icomoon.io/public/9673ff8c96/ISBoilerPlate/style.css">
+  {{ styles|raw }}
+</head>
+<body class="kss-body">
+
+  {# header #}
+  <header class="kss-header">
+    <section class="kss-header-inner">
+      <h1 class="kss-header-title kss-title">{{options.title}}</h1>
+      <a class="kss-header-hamburger-trigger">
+        <div class="kss-header-hamburger"></div>
+      </a>
+    </section>
+  </header>
+  {# /header #}
+
+  {# navigation #}
+  <section class="kss-navigation">
+    <div class="kss-navigation-header">
+      <a class="kss-logo" href="/styleguide/">
+        <img src="kss-assets/images/is-logo.svg">
+      </a>
+      <h1 class="kss-navigation-title kss-title"><a href="/styleguide/">{{options.title}}</a></h1>
+    </div>
+
+    {# search #}
+    <div class="kss-search">
+      <label for="kss-search">Search</label>
+      <input id="kss-search" type="text" />
+    </div>
+
+    <ul class="kss-nav">
+
+      {# intro nav item #}
+      <li class="kss-nav-item">
+        <a class="kss-nav-item-link" href="index.html">
+          <span class="kss-nav-name">Introduction</span>
+        </a>
+      </li>
+      {# /intro nav item #}
+
+      {#  main nav #}
+      {% for menu_item in menu %}
+        <li class="kss-nav-item">
+          <a class="kss-nav-item-link{% if menu_item.isActive %} kss-state-active{% endif %}" href="section-{{ menu_item.referenceURI }}.html">
+            <span class="kss-nav-name">{{ menu_item.header }}</span>
+          </a>
+
+          {#  grandchildren #}
+          {% if menu_item.isActive and menu_item.children is not empty %}
+            <ul class="kss-nav-subnav">
+              {% for menu_child in menu_item.children %}
+                <li class="kss-nav-item{% if menu_child.isGrandChild %} kss-nav-item--grandchild{% endif %}">
+                  <a class="kss-nav-item-link" href="section-{{ menu_item.referenceURI }}.html#lsgref-{{ menu_child.referenceURI }}">
+                    <span class="kss-nav-name">{{ menu_child.header }}</span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {#  .grandchildren #}
+      </li>
+      {% endfor %}
+      {#  /main nav #}
+
+    </ul>
+  </section>
+  {# /navigation #}
+
+
+  {# documentation #}
+  <section class="kss-documentation">
+    {% if template.isHomepage %}
+      {% if homepage %}
+        <div class="kss-markdown">{{ homepage|raw }}</div>
+      {% endif %}
+    {% else %}
+
+      {#
+        Display each section, in order.
+
+        The "root" element comes first in this loop, and can be detected using the
+        "loop.first" variable as seen below.
+      #}
+
+      {% for section in sections %}
+        <section class="kss-section kss-section--depth-{{section.depth}}" id="lsgref-{{section.referenceURI}}">
+
+          {# section content #}
+          <div class="kss-section-content">
+
+            {# section header #}
+            {% set headerElement = (section.depth > 6) ? 'h6' : 'h' ~ section.depth %}
+            <{{ headerElement }} class="kss-section-item kss-section-item--depth-{{depth}}">
+              <span class="kss-section-name"><a class="kss-section-name" href="#lsgref-{{section.referenceURI}}">{{section.header}}</a></span>
+            </{{ headerElement }}>
+            {# /section header #}
+
+            {# section description #}
+            {% if section.description %}
+              <div class="kss-section-description">{{ section.description|raw }}</div>
+            {% endif %}
+            {# /section description #}
+
+            {# color section #}
+            {% if section.colors %}
+              <div class="kss-colors-container">
+                {% kssColors section.colors %}
+                  <div class="kss-color" style="background-color: {{color.hex}};">
+                    <div class="kss-color-description">
+                      <span class="kss-color-name">{{color.name}}</span>
+                      <span class="kss-color-var"><span class="kss-color-label">Sass:</span> {{color.sass}}</span>
+                      <span class="kss-color-code"><span class="kss-color-label">Hex:</span> {{color.hex}}</span>
+                    </div>
+                  </div>
+                {% endkssColors %}
+              </div>
+            {% endif %}
+            {# /color section #}
+
+            {# icons section #}
+            {% if section.icons %}
+              <div class="kss-icons-container">
+                {% kssIcons section.icons %}
+                  <div class="kss-icon">
+                    <div class="kss-icon-demo"><span class="{{icon.character}}"></span></div>
+                    <div class="kss-icon-name">{{icon.name}}</div>
+                  </div>
+                {% endkssIcons %}
+              </div>
+            {% endif %}
+            {# /icons section #}
+
+            {# function section #}
+            {% if section.function %}
+              <div class="kss-section-function">
+                <div class="kss-function-heading">Function</div>
+                <pre class="kss-pre language-scss"><code>{{section.function|raw}}</code></pre>
+                <div class="kss-click-to-expand">Click to Expand</div>
+              </div>
+            {% endif %}
+            {# /function section #}
+
+            {# definition section #}
+            {% if section.definition %}
+              <div class="kss-section-function">
+                <div class="kss-function-heading">Definition</div>
+                <pre class="kss-pre language-scss"><code>{{section.definition|raw}}</code></pre>
+                <div class="kss-click-to-expand">Click to Expand</div>
+              </div>
+            {% endif %}
+            {# /definition section #}
+
+            {# parameters section #}
+            {% if section.function or section.definition %}
+              <div class="kss-section-parameters">
+                <div class="kss-parameters-heading">Parameters</div>
+                <table class="kss-section-parameters-table">
+                  <tr>
+                    <th class="name">Name</th>
+                    <th class="description">Description</th>
+                    <th class="default">Default Value</th>
+                  </tr>
+                  {% if section.parameters %}
+                  {% for parameter in section.parameters %}
+                    <tr>
+                      <td class="name"><code>{{parameter.name}}</code></td>
+                      <td class="description">{{parameter.description|raw}}</td>
+                      <td class="default">{% if parameter.defaultValue %}<code>{{parameter.defaultValue}}</code>{% else %}<code>N/A</code>{% endif %}</td>
+                    </tr>
+                  {% endfor %}
+                  {% else %}
+                    <tr>
+                      <td><em>No parameters</em></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  {% endif %}
+                </table>
+              </div>
+            {% endif %}
+            {# /parameters section #}
+
+            {# usage section #}
+            {% if section.usage %}
+              <div class="kss-section-usage">
+                <div class="kss-usage-heading">Example Usage</div>
+                <pre class="kss-pre language-scss"><code>{{section.usage|raw}}</code></pre>
+              </div>
+            {% endif %}
+            {# /usage section #}
+
+            {# compiled section #}
+            {% if section.compiled %}
+              <div class="kss-section-compiled">
+                <div class="kss-compiled-heading">Compiled Output</div>
+                <pre class="kss-pre language-scss"><code>{{section.compiled|raw}}</code></pre>
+              </div>
+            {% endif %}
+            {# /compiled section #}
+
+          </div>
+          {# /section content #}
+
+          {# example section #}
+          {% if section.example %}
+            <div class="kss-section-modifiers">
+              <div class="kss-modifiers-heading">
+                Example{% if section.modifiers is not empty %}s{% endif %}
+              </div>
+
+              <div class="kss-modifiers-example-wrapper"{% if section.wrapper %} style="{{ section.wrapper|raw }}"{% endif %}>
+
+                {% if section.modifiers is not empty %}
+                  <div class="kss-modifiers-item-header">
+                    <h2 class="kss-modifiers-name">Default</h2>
+                  </div>
+                {% endif %}
+
+                <div class="kss-modifiers-example">
+                   {{ section.example|raw }}
+                </div>
+
+                {% for modifier in section.modifiers %}
+                  <div class="kss-modifiers-item-header">
+                    <h2 class="kss-modifiers-name">{{modifier.name}}&nbsp;&ndash;&nbsp;</h2>
+                    <div class="kss-modifiers-description">{{ modifier.description|raw }}</div>
+                  </div>
+
+                  <div class="kss-modifiers-example">
+                     {{ modifier.markup|raw }}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+          {# /example section #}
+
+          {# markup section #}
+          {# maybe use this? section.markupFile #}
+          {% if section.markup %}
+          <div class="kss-section-markup">
+            <div class="kss-markup-heading">Markup</div>
+            <pre class="kss-pre line-numbers"><code class="language-markup">{{ section.markup|escape('html') }}</code></pre>
+          </div>
+          {% endif %}
+          {# /markup section #}
+
+          {% if not loop.first %}
+            {% if section.source.filename %}
+              <div class="kss-section-source">
+                <span class="kss-source-heading">Source:</span> <code>{{section.source.filename}}</code>, line {{section.source.line}}
+              </div>
+            {% endif %}
+          {% endif %}
+
+        </section>
+      {% endfor %}
+
+    {% endif %}
+  </section>
+  {# /documentation #}
+
+  {# Table of contents for search autocomplete #}
+  <ul id="kss-toc" style="display: none;">
+    {% for menu_item in menu %}
+      <li class="kss-toc-item" data-url="section-{{ menu_item.referenceURI }}.html#lsgref-{{ menu_item.referenceURI }}" data-name="{{ menu_item.header }}"></li>
+
+      {% for menu_child in menu_item.children %}
+        <li class="kss-toc-item" data-url="section-{{ menu_item.referenceURI }}.html#lsgref-{{ menu_child.referenceURI }}" data-name="{{menu_child.header}}" data-type="{{menu_item.header}}"></li>
+      {% endfor %}
+
+    {% endfor %}
+  </ul>
+  {# /table of contents #}
+
+  <!-- scripts -->
+  <script src="kss-assets/vendor/jquery.js"></script>
+  <script src="kss-assets/vendor/srcdoc-polyfill.js"></script>
+  <script src="kss-assets/vendor/prism.js"></script>
+  <script src="kss-assets/vendor/autocomplete.js"></script>
+  <script src="kss-assets/js/kss.js"></script>
+  {{ scripts|raw }}
+
+</body>
+</html>

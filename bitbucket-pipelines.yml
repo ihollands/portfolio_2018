@@ -1,0 +1,21 @@
+image: noxan/docker-node-awscli-yarn
+
+pipelines:
+  branches:
+    development:
+      - step:
+          caches:
+            - node
+          script:
+            # Install FE dependencies
+            - yarn
+            - yarn global add gulp
+            # Compile FE assets
+            - gulp
+            # Setup Default Region.
+            - export AWS_DEFAULT_REGION=us-east-1
+            # Setup HTML S3 Credentials.
+            - export AWS_ACCESS_KEY_ID=$_AWS_HTML_GLOBAL_ID
+            - export AWS_SECRET_ACCESS_KEY=$_AWS_HTML_GLOBAL_KEY
+            # Sync template files to HTML template buckets.
+            - aws s3 sync dist/ s3://S3_BUCKET_NAME.html.interactive-strategies.com --delete

@@ -1,0 +1,28 @@
+{
+  "site_header": {
+    "main_nav": [
+      {
+        "text": "Page 1",
+        "url": "#"
+      },
+      {
+        "text": "Page 2",
+        "url": "#",
+        "children": [
+          {
+            "text": "Sub Page 1",
+            "url": "#"
+          },
+          {
+            "text": "Sub Page 2",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "text": "Page 3",
+        "url": "#"
+      }
+    ]
+  }
+}

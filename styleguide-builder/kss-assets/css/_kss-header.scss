@@ -1,0 +1,101 @@
+$kss-header-hamburger-color: $white;
+
+$bar-height: 2px;
+$bar-width: 30px;
+
+.kss-header {
+  z-index: 900;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 50px;
+  padding: 10px;
+  background: #ff4338;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+
+  @include mq(min, 1100px) {
+    position: relative;
+    padding: 0 10px 0 334px;
+  }
+}
+
+.kss-header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mq(min, 1100px) {
+    height: 195px;
+  }
+
+  h1 {
+    color: $white;
+    font-weight: 300;
+    font-size: rem(30px);
+    flex: 1 1 0;
+    line-height: 1;
+    padding: 16px;
+
+    @include mq(min, 1100px) {
+      font-size: rem(46px);
+    }
+  }
+}
+
+.kss-header-title {
+  font-size: rem(16px);
+  line-height: 25px;
+  text-align: left;
+
+  @include mq(min, 568px) {
+    font-size: rem(20px);
+  }
+}
+
+.kss-header-hamburger-trigger {
+  display: block;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
+  @include mq(min, 1100px) {
+    display: none;
+  }
+}
+
+.kss-header-hamburger {
+  width: $bar-width;
+  height: $bar-height;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  color: $kss-header-hamburger-color;
+  background: $kss-header-hamburger-color;
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: .4s;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: $bar-width;
+    height: $bar-height;
+    background: $kss-header-hamburger-color;
+    transition: .5s;
+  }
+
+  &::before {
+    top: -$bar-height * 4;
+  }
+
+  &::after {
+    top: $bar-height * 4;
+  }
+}

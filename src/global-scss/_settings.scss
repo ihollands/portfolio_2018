@@ -1,0 +1,27 @@
+//  Slicer Breakpoints
+//  https://github.com/lolmaus/breakpoint-slicer
+//
+//  Breakpoint:    0      100px   200px   320px   400px   500px   600px   700px       1800px
+//                 |───────┼───────┼───────┼───────┼───────┼───────┼───────┼──── ... ───┼────────>
+//  Slice #:               1       2       3       4       5       6       7           18
+$slicer-breakpoints: 100px 200px 320px 400px 500px 600px 700px 800px 900px 1000px 1100px 1200px 1300px 1400px 1500px 1600px 1700px 1800px;
+$slicer-anti-overlap-corrections: -1px;
+
+$arial: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+
+// type variables
+$body-text-color: primary-color(black);
+$body-text-font: $arial;
+$header-font: $arial;
+$header-color: firebrick;
+$link-color: mediumblue;
+$hr-color: green;
+
+$base-font-size: 16px;
+
+// radius
+$border-radius: 3px;
+
+// transitions
+$ts: .15s; // transition speed
+$te: ease-in-out; // transition ease

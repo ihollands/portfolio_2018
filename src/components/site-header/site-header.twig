@@ -1,0 +1,17 @@
+<header class="site-header">
+  <ul class="main-nav">
+  {% for item in site_header.main_nav %}
+    {% if item.children %}
+      <li><a href="{{ item.url }}">{{ item.text }}</a>
+        <ul class="main-nav-subnav">
+          {% for child in item.children %}
+          <li><a href="{{ child.url }}">{{ child.text }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% else %}
+      <li><a href="{{ item.url }}">{{ item.text }}</a></li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</header>

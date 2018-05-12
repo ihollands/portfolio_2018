@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html lang="en-US" dir="ltr">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- TODO: Replace ICOMOON STYLE SHEET (replace for your project) -->
+  <link rel="stylesheet" href="https://i.icomoon.io/public/9673ff8c96/ISBoilerPlate/style.css">
+  <!-- / -->
+
+</head>
+
+<body>
+
+  <div class="page-container">
+
+    {% block header %}
+      {% include 'components/site-header/site-header.twig' with site_header %}
+    {% endblock %}
+
+    <main>
+      {% block body %}{% endblock %}
+    </main>
+
+    {% block footer %}
+      <footer>Footer</footer>
+    {% endblock %}
+
+  </div>
+
+  <!-- Vendor JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="js/bundle.js"></script>
+
+</body>
+
+</html>

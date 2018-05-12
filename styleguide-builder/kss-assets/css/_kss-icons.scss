@@ -1,0 +1,36 @@
+.kss-icons-container {
+  margin: 0 0 0 -15px;
+  padding-left: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -15px;
+}
+
+.kss-icon {
+  width: calc(50% - 15px);
+  margin-top: 15px;
+  margin-left: 15px;
+  text-align: center;
+  padding: 15px;
+  background: $white;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .1);
+
+  @include mq(min, 568px) {
+    width: 130px;
+  }
+
+  [class*=' icon-'],
+  [class^='icon-'] {
+    font-size: 42px;
+    line-height: 1;
+    color: #757575;
+  }
+
+  &-name {
+    font-size: rem(12px);
+    font-weight: 600;
+    color: #434343;
+    margin-top: 16px;
+  }
+}

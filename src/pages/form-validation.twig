@@ -1,0 +1,84 @@
+{% extends "layout.twig" %}
+
+{% set page_title = "Form Validation Page" %}
+
+{% block body %}
+  <!-- form-validation.twig -->
+  <div style="max-width: 1240px; padding: 0 20px; margin: 0 auto;">
+    <h1>Sample Form Validation Page</h1>
+    <p>Hit submit to view validation. We are using Hyperform JS for client-side validation, instead of built-in HTML5 validation so we can have a consistent, styleable, custom experience for our users</p>
+
+    <form>
+
+      {# <label for="name">Full Name</label> #}
+      <input type="text" id="name" required>
+
+      <label for="emailfield">Email Address</label>
+      <input type="email" id="emailfield" required>
+
+      <label for="phone">Phone Number (optional)</label>
+      <input type="tel" id="phone" placeholder="Phone Number (optional)">
+
+      <label for="select">Select</label>
+      <select id="select" required>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Write your message here..."></textarea>
+
+      <fieldset class="checks" data-required="true">
+        <legend>Checkbox group label</legend>
+        <div class="check">
+          <input type="checkbox" id="c1" name="cb">
+          <label for="c1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="c2" name="cb">
+          <label for="c2">Option Two</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="c3" name="cb">
+          <label for="c3">Option Three</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="checks" data-required="true">
+        <legend>Checkbox group label</legend>
+        <div class="check">
+          <input type="checkbox" id="cb1" name="cb2">
+          <label for="cb1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="cb2" name="cb2">
+          <label for="cb2">Option Two</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="cb3" name="cb2">
+          <label for="cb3">Option Three</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="radios" data-required="true">
+        <legend>Radio button group label</legend>
+        <div class="radio">
+          <input type="radio" id="r1" name="rd">
+          <label for="r1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</label>
+        </div>
+        <div class="radio">
+          <input type="radio" id="r2" name="rd">
+          <label for="r2">Option Two</label>
+        </div>
+        <div class="radio">
+          <input type="radio" id="r3" name="rd">
+          <label for="r3">Option Three</label>
+        </div>
+      </fieldset>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+{% endblock %}

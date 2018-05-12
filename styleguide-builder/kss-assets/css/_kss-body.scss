@@ -1,0 +1,11 @@
+.kss-body {
+  margin: 0;
+  padding: 0;
+  background: #f3f5f7;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  &.kss-state-active {
+    height: 100vh;
+    overflow-y: hidden;
+  }
+}

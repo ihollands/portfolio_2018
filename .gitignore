@@ -1,0 +1,20 @@
+# Ignore . files and others.
+.DS_Store
+.bundle
+*.ini
+*.log
+apc.php
+error_log
+
+# Ignore node_modules bundle and vendor
+node_modules
+
+# Ignore compiled output
+dist
+sourcemaps
+styleguide-builder/kss-assets/css/kss.css
+src/compiled-data.json
+
+.env
+accessibility-builder/raw-reports
+accessibility-builder/accessibility-report.json

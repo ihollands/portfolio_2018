@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-US" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Accessibility Report</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/themes/prism.min.css">
+  <link rel="stylesheet" href="a11y.css">
+</head>
+
+<body>
+
+  <header class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="header-row">
+        <img src="is-logo.svg" alt="Interactive Strategies">
+        <h1>Accessibility Report</h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <fieldset class="form-group js-filter-types">
+      <legend>Issue Types</legend>
+      <div class="custom-control custom-control-inline custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="error" value="error" name="types" checked>
+        <label class="custom-control-label" for="error">Errors</label>
+      </div>
+      <div class="custom-control custom-control-inline custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="warning" value="warning" name="types" checked>
+        <label class="custom-control-label" for="warning">Warnings</label>
+      </div>
+      <div class="custom-control custom-control-inline custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="notice" value="notice" name="types">
+        <label class="custom-control-label" for="notice">Notices</label>
+      </div>
+    </fieldset>
+
+    {% block body %}
+      {% for report in reports %}
+        <h2><strong>File:</strong> {{ report.filename }}</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th class="num" scope="col">#</th>
+                <th class="type" scope="col">Type</th>
+                <th class="description" scope="col">Description</th>
+                <th class="position">Position</th>
+                <th class="markup">Markup</th>
+                <th class="rule">Rule</th>
+              </tr>
+            </thead>
+            <tbody class="js-filter-container">
+              {% for message in report.messageLog %}
+                <tr data-type="{{ message.heading | lower }}">
+                  <td class="num">{{ loop.index }}</td>
+                  <td class="type">{{ message.heading | title }}</td>
+                  <td class="description">{{ message.description }}</td>
+                  <td class="position">Line {{ message.position.lineNumber }}, Col {{ message.position.columnNumber }}</td>
+                  <td class="markup"><a href="#" data-toggle="modal" data-target="#markupModal" data-content="{{ message.element.node | escape('html') }}">View Markup</a></td>
+                  <td class="rule"><a href="{{ message.link }}" target="_blank">View Rule</a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endfor %}
+    {% endblock %}
+  </main>
+
+  <div class="modal fade" id="markupModal" tabindex="-1" role="dialog" aria-labelledby="markupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="markupModalLabel">Markup</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <pre><code class="language-css modal-markup"></code></pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sticky-table-headers"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/prism.min.js" data-manual></script>
+
+  <script type="text/javascript">
+
+    $('.js-filter-types :checkbox').on( 'change', function() {
+      if (this.checked) {
+        $('.js-filter-container tr[data-type="' + this.value + '"]').show();
+      } else {
+        $('.js-filter-container tr[data-type="' + this.value + '"]').hide();
+      }
+    });
+
+    $('table').stickyTableHeaders();
+
+    $('#markupModal').on('show.bs.modal', function(event) {
+      $(this).find('.modal-markup').text($(event.relatedTarget).data('content'));
+      Prism.highlightAll();
+    });
+
+  </script>
+
+</body>
+
+</html>
