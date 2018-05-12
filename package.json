@@ -1,7 +1,7 @@
 {
-  "name": "falcore-fe-boilerplate",
+  "name": "razviyadro",
   "version": "3.0.0",
-  "description": "Front-end Boilerplate for Interactive Strategies",
+  "description": "Ian Hollands - Web Development Core",
   "engines": {
     "node": ">=6"
   },
